@@ -1,85 +1,56 @@
-﻿// Przygotuj program, który policzy ile jakich cyfr
-// występuje w podanej liczbie
+﻿using ChallengeApp2024;
+using System.Runtime.CompilerServices;
+// 1. Stwórz klasę Employee, w której przechowasz imię, nazwisko, wiek 
+// oraz punkty pracownika w postaci liczb całkowitycz
 //
-// Przykład:
-// Wynik dla liczby: 4556
-// 0 => 0
-// 1 => 0
-// 2 => 0
-// 3 => 0
-// 4 => 1
-// 5 => 1
-// 6 => 2
-// 7 => 0
-// 8 => 0
-// 9 => 0
+// 2. Stwórz 3 pracowników i każdemu przydziel po 5 ocen z zakresu
+// od 1 do 10
+//
+// 3. Napisz program, który wyszuka pracownika z najwyższą liczbą ocen
+// a następnie wyświetl jego dane oraz wynik.
 
-int number = 45866;
-string numberInString = number.ToString();
-char[] letters = numberInString.ToArray();
-
-int counter0 = 0;
-int counter1 = 0;
-int counter2 = 0;
-int counter3 = 0;
-int counter4 = 0;
-int counter5 = 0;
-int counter6 = 0;
-int counter7 = 0;
-int counter8 = 0;
-int counter9 = 0;
-
-foreach (char letter in letters)
+Employee employe1 = new Employee("Adam", "Kowalski", 29);
+Employee employe2 = new Employee("Janusz", "Kowal", 34);
+Employee employe3 = new Employee("Natalia", "Kowalska", 25);
+List<Employee> employees = new List<Employee>()
 {
-    if(letter == '0')
+    employe1, employe2, employe3
+};
+int maxResult = -1;
+List<Employee> employeeWithMaxResult = new List<Employee>();
+
+employe1.AddScore(9);
+employe1.AddScore(5);
+employe1.AddScore(2);
+employe1.AddScore(7);
+employe1.AddScore(6);
+
+employe2.AddScore(9);
+employe2.AddScore(8);
+employe2.AddScore(2);
+employe2.AddScore(5);
+employe2.AddScore(4);
+
+employe3.AddScore(9);
+employe3.AddScore(6);
+employe3.AddScore(8);
+employe3.AddScore(2);
+employe3.AddScore(2);
+
+foreach (var Employee in employees)
+{
+    if (Employee.Result == maxResult)
     {
-        counter0++;
+        employeeWithMaxResult.Add(Employee);
     }
-    else if(letter == '1')
-    { 
-        counter1++;
-    }
-    else if(letter == '2')
+    else if (Employee.Result > maxResult)
     {
-        counter2++;
-    }
-    else if(letter == '3')
-    {
-        counter3++;
-    }
-    else if(letter == '4')
-    {
-        counter4++;
-    }
-    else if(letter == '5')
-    {
-        counter5++;
-    }
-    else if(letter == '6')
-    {
-        counter6++;
-    }
-    else if(letter == '7')
-    {
-        counter7++;
-    }
-    else if(letter == '8')
-    {
-        counter8++;
-    }
-    else if(letter == '9')
-    {
-        counter9++;
+        maxResult = Employee.Result;
+        employeeWithMaxResult.Clear();
+        employeeWithMaxResult.Add(Employee);
     }
 }
-Console.WriteLine("Twoja liczba to: " + number);
-Console.WriteLine("0" + "=>" + counter0);
-Console.WriteLine("1" + "=>" + counter1);
-Console.WriteLine("2" + "=>" + counter2);
-Console.WriteLine("3" + "=>" + counter3);
-Console.WriteLine("4" + "=>" + counter4);
-Console.WriteLine("5" + "=>" + counter5);
-Console.WriteLine("6" + "=>" + counter6);
-Console.WriteLine("7" + "=>" + counter7);
-Console.WriteLine("8" + "=>" + counter8);
-Console.WriteLine("9" + "=>" + counter9);
+foreach (var employee in employeeWithMaxResult)
+{
+    Console.WriteLine(employee.Name + " " + employee.Surname + " " + "wiek" + " " + employee.Age + " " + "wynik" + " " + employee.Result);
+}
