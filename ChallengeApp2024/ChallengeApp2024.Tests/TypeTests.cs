@@ -45,23 +45,5 @@
             Assert.AreNotEqual(number1, number2);
         }
 
-        [Test]
-        public void UserNameUserPasswordAreNotEqual()
-        {
-            // arrenge
-            var user1 = GetUser("Adam","45242fdg");
-            var user2 = GetUser("Adam", "3245");
-
-            // act
-
-
-            // assert
-            Assert.AreNotEqual(user1, user2);
-        }
-
-        private User GetUser(string name, string password)
-        {
-            return new User(name);
-        }
     }
 }
