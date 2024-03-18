@@ -6,7 +6,7 @@
         public void WhenEmployeeCollectGrades_ShouldReturnStatistics()
         {
             //arrenge
-            var employee = new Employee("Janusz", "kowalski");
+            var employee = new Employee("Janusz", "kowalski", 'M');
             employee.AddGrade(2);
             employee.AddGrade(2);
             employee.AddGrade(6);
@@ -24,7 +24,7 @@
         public void WhenEmployeeCollectLetterGrades_ShouldReturnStatistics()
         {
             //arrenge
-            var employee = new Employee("Janusz", "kowalski");
+            var employee = new Employee("Janusz", "kowalski", 'M');
             employee.AddGrade('A');
             employee.AddGrade('B');
             employee.AddGrade('C');

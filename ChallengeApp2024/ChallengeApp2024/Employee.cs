@@ -1,16 +1,12 @@
 ﻿using System.Diagnostics;
+using System.Security.Cryptography.X509Certificates;
 using System.Xml.Xsl;
 
 namespace ChallengeApp2024
 {
-    public class Employee
+    public class Employee : IEmployee
     {
         private List<float> grades = new List<float>();
-
-        public Employee()
-        {
-
-        }
 
         public Employee(string name, string surname)
         {
@@ -18,8 +14,7 @@ namespace ChallengeApp2024
             this.Surname = surname;
         }
 
-
-        public string Name { get; private set; }
+        public string Name { get; }
         public string Surname { get; private set; }
 
         public void AddGrade(float grade)
@@ -30,7 +25,7 @@ namespace ChallengeApp2024
             }
             else
             {
-                Console.WriteLine("invalid grade value");
+                throw new Exception("Podaj wartość z zakresu 0-100");
             }
         }
 
@@ -42,7 +37,7 @@ namespace ChallengeApp2024
             }
             else
             {
-                Console.WriteLine("String is not float");
+                throw new Exception("String is not float");
             }
         }
 
@@ -91,8 +86,7 @@ namespace ChallengeApp2024
                     this.grades.Add(20);
                     break;
                 default:
-                    Console.WriteLine("Wrong letter");
-                    break;
+                    throw new Exception("Wrong letter");
             }
         }
 
